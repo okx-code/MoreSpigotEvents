@@ -1,0 +1,4 @@
+name: MoreSpigotEvents
+main: me.okx.morespigotevents.MoreSpigotEvents
+version: 1.0
+depend: [ProtocolLib]
