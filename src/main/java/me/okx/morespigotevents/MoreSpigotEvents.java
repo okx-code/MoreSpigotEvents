@@ -2,10 +2,7 @@ package me.okx.morespigotevents;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
-import me.okx.morespigotevents.listeners.PlayerCameraChangeEventListener;
-import me.okx.morespigotevents.listeners.PlayerListUpdateEventListener;
-import me.okx.morespigotevents.listeners.PlayerOpenSignEditorEventListener;
-import me.okx.morespigotevents.listeners.PlayerSettingsUpdateEventListener;
+import me.okx.morespigotevents.listeners.*;
 import me.okx.morespigotevents.tests.DebugPlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -25,6 +22,7 @@ public class MoreSpigotEvents extends JavaPlugin {
         protocolManager.addPacketListener(new PlayerSettingsUpdateEventListener(this));
         protocolManager.addPacketListener(new PlayerListUpdateEventListener(this));
         protocolManager.addPacketListener(new PlayerOpenSignEditorEventListener(this));
+        protocolManager.addPacketListener(new PlayerChangeGameStateListener(this));
     }
 
     private void registerDebugListeners() {
