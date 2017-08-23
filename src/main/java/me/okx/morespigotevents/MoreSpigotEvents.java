@@ -15,7 +15,7 @@ public class MoreSpigotEvents extends JavaPlugin {
     @Override
     public void onEnable() {
         registerListeners();
-        registerDebugListeners();
+        //registerDebugListeners();
     }
 
     private void registerListeners() {
@@ -30,6 +30,6 @@ public class MoreSpigotEvents extends JavaPlugin {
     private void registerDebugListeners() {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
-        pluginManager.registerEvents(new DebugPlayerList    ener(), this);
+        pluginManager.registerEvents(new DebugPlayerListener(), this);
     }
 }
