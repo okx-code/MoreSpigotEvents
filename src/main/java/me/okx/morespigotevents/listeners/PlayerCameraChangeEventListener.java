@@ -37,6 +37,10 @@ public class PlayerCameraChangeEventListener extends PacketAdapter {
         PlayerCameraChangeEvent cameraEvent = new PlayerCameraChangeEvent(event.getPlayer(), entity);
         Bukkit.getPluginManager().callEvent(cameraEvent);
         if(cameraEvent.isCancelled()) {
+            // Simply cancelling the packet seems to make the server think they are still
+            // spectating the entity but the client will be able to move freely, and
+            // when the client presses shift or an alternate keybind the server will
+            // take the client out of spectating the entity, and teleport them on top of it.
             Bukkit.getScheduler().runTask(plugin, () -> player.setSpectatorTarget(null));
         }
     }

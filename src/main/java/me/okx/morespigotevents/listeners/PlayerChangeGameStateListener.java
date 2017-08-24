@@ -19,6 +19,9 @@ public class PlayerChangeGameStateListener extends PacketAdapter {
         if(reason == 10) {
             PlayerElderGuardianEffectEvent elderGuardianEffectEvent = new PlayerElderGuardianEffectEvent(event.getPlayer());
             Bukkit.getPluginManager().callEvent(elderGuardianEffectEvent);
+            if(elderGuardianEffectEvent.isCancelled()) {
+                event.setCancelled(true);
+            }
         }
     }
 }

@@ -2,12 +2,13 @@ package me.okx.morespigotevents.events;
 
 import com.comphenix.protocol.wrappers.ChunkPosition;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 
-public class PlayerOpenSignEditorEvent extends PlayerEvent {
+public class PlayerOpenSignEditorEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-
+    private boolean cancelled = false;
     private ChunkPosition position;
 
     /**
@@ -35,5 +36,19 @@ public class PlayerOpenSignEditorEvent extends PlayerEvent {
 
     public static HandlerList getHandlerList() {
         return handlers;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    /**
+     * Set whether the event should be cancelled. If it is, it will be perceived as if the client placed a blank sign.
+     * @param b Whether the event should be cancelled.
+     */
+    @Override
+    public void setCancelled(boolean b) {
+        cancelled = b;
     }
 }
