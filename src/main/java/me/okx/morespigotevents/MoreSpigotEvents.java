@@ -24,6 +24,7 @@ public class MoreSpigotEvents extends JavaPlugin {
         protocolManager.addPacketListener(new PlayerOpenSignEditorEventListener(this));
         protocolManager.addPacketListener(new PlayerChangeGameStateListener(this));
         protocolManager.addPacketListener(new PlayerReceiveStatisticsEventListener(this));
+        protocolManager.addPacketListener(new PlayerReceiveMessageEventListener(this));
     }
 
     private void registerDebugListeners() {

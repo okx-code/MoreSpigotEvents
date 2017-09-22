@@ -15,8 +15,8 @@ public class DebugPlayerListener implements Listener {
 
     @EventHandler
     public void on(PlayerListUpdateEvent e) {
-        Bukkit.getPlayer("Okx").sendMessage("Footer:");
-        Bukkit.getPlayer("Okx").spigot().sendMessage(e.getFooter());
+        e.getPlayer().sendMessage("Footer:");
+        e.getPlayer().spigot().sendMessage(e.getFooter());
         e.setCancelled(true);
     }
 
@@ -33,12 +33,17 @@ public class DebugPlayerListener implements Listener {
 
     @EventHandler
     public void on(PlayerElderGuardianEffectEvent e) {
-        Bukkit.broadcastMessage("eeehh");
+        Bukkit.broadcastMessage("elder guardian effect");
         e.setCancelled(true);
     }
 
     @EventHandler
     public void on(PlayerReceiveStatisticsEvent e) {
-        System.out.println(e.getStatistic("stat.walkOneCm"));
+        Bukkit.broadcastMessage(e.getStatistic("stat.walkOneCm") + "");
+    }
+
+    @EventHandler
+    public void on(PlayerReceiveMessageEvent e) {
+        System.out.println(e.toPlainText() + " type: " + e.getType().name() + " -> " + e.getPlayer().getName());
     }
 }
